@@ -1,0 +1,17 @@
+{
+  "name": "Python + Node.js + Go Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "postCreateCommand": "go version && node -v && python3 --version",
+  "extensions": [
+    "ms-python.python",
+    "golang.go",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ],
+  "remoteUser": "vscode"
+}
