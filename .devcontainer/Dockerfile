@@ -29,6 +29,11 @@ RUN bash -c "export NVM_DIR=$NVM_DIR && \
     ln -s $NVM_DIR/versions/node/v$NODE_VERSION/bin/npm /usr/local/bin/npm && \
     ln -s $NVM_DIR/versions/node/v$NODE_VERSION/bin/npx /usr/local/bin/npx"
 
+# Ensure Node.js binaries are in PATH for all users
+RUN echo "export NVM_DIR=$NVM_DIR" >> /etc/profile.d/nvm.sh && \
+    echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> /etc/profile.d/nvm.sh && \
+    echo "export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:\$PATH" >> /etc/profile.d/nvm.sh
+
 # --- Install Go ---
 ENV GO_VERSION=1.22.2
 RUN curl -LO https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz && \

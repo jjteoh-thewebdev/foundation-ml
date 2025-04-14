@@ -1,0 +1,23 @@
+{
+  "name": "foundation-ml",
+  "version": "1.0.0",
+  "description": "# foundation-ml A collection of implementation of classic ML algo(knn, svm, naive bayes, k-mean and etc,)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjteoh-thewebdev/foundation-ml.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "JJ TEOH",
+    "url": "https://github.com/jjteoh-thewebdev/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjteoh-thewebdev/foundation-ml/issues"
+  },
+  "homepage": "https://github.com/jjteoh-thewebdev/foundation-ml#readme"
+}
