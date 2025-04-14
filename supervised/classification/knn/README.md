@@ -4,9 +4,15 @@
 K-Nearest Neighbors is a simple, non-parametric algorithm used for classification and regression. It predicts the output based on the majority class or average of the nearest neighbors.
 
 ## Key Concepts
-- **Distance Metrics**: Measures like Euclidean, Manhattan, or Minkowski distance to find nearest neighbors.
+- **Distance Metrics**: Measures like Euclidean(√∑(xᵢ - yᵢ)²), Manhattan(∑|xᵢ - yᵢ|), or Minkowski distance to find nearest neighbors.
 - **K Value**: The number of neighbors considered for prediction.
 - **Lazy Learning**: No explicit training phase; predictions are made during inference.
+
+## Algo
+1. Compute distance between `X_test` and `X_train`
+2. Sort the distance
+3. Pick the top `k` nearest neighbors
+4. Return majority class among those neighbors.
 
 ## Common Applications
 - Pattern recognition
