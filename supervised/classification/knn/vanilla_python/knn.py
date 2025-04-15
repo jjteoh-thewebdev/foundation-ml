@@ -8,27 +8,30 @@ class KNNClassifier:
         self.weights = weights
     
     def fit(self, X_train, y_train):
-        self.X_train = np.array(X_train)
-        self.y_train = np.array(y_train)
+        self.X_train = np.array(X_train, dtype=np.float32)
+        self.y_train = np.array(y_train, dtype=np.float32)
     
-    def _distance(self, x1, x2):
+    def _compute_distances(self, x):
         if self.distance_metric == 'euclidean':
-            return np.sqrt(np.sum((x1 - x2) ** 2))
+            # Vectorized Euclidean distance
+            return np.sqrt(np.sum((self.X_train - x) ** 2, axis=1))
         elif self.distance_metric == 'manhattan':
-            return np.sum(np.abs(x1 - x2))
+            # Vectorized Manhattan distance
+            return np.sum(np.abs(self.X_train - x), axis=1)
         else:
             raise ValueError("Unsupported distance metric. Use 'euclidean' or 'manhattan'")
     
     def predict(self, X_test):
-        X_test = np.array(X_test)
+        X_test = np.array(X_test, dtype=np.float64)
         return np.array([self._predict_single(x) for x in X_test])
     
     def _predict_single(self, x):
         # Calculate distances
-        distances = [self._distance(x, x_train) for x_train in self.X_train]
+        # distances = [self._distance(x, x_train) for x_train in self.X_train]
+        distances = self._compute_distances(x)
         
         # Get k nearest neighbors
-        k_indices = np.argsort(distances)[:self.k]
+        k_indices = np.argsort(distances)[:self.k] # argsort returns indices of the sorted array
         k_neighbor_labels = [self.y_train[i] for i in k_indices]
         k_neighbor_distances = [distances[i] for i in k_indices]
 
