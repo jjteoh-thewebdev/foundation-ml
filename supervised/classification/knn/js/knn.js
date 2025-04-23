@@ -112,9 +112,8 @@ function shuffle(array, randomFn) {
 
 
 // Load data from CSV
-console.log(`root: ${__dirname}`)
-console.log(`pwd: ${process.cwd()}`)
-const filePath = `${process.cwd()}/dataset/customer_segmentation/clean/data.csv`; 
+// make sure to run this from the js/ folder
+const filePath = `../../../../dataset/customer_segmentation/clean/data.csv`;
 const data = fs.readFileSync(filePath, 'utf8');
 let rows = data.trim().split('\n').map(row => row.split(','));
 
