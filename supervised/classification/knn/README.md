@@ -29,3 +29,7 @@ K-Nearest Neighbors is a simple, non-parametric algorithm used for classificatio
 - Computationally expensive for large datasets.
 - Sensitive to the choice of K and distance metric.
 - Struggles with high-dimensional data.
+
+Useful links:
+- [IBM Youtube](https://www.youtube.com/watch?v=b6uHw7QW_n4&ab_channel=IBMTechnology)
+- [FreeCodeCamp](https://www.freecodecamp.org/news/k-nearest-neighbors-algorithm-classifiers-and-model-example/)

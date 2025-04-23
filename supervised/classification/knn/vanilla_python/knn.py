@@ -14,6 +14,8 @@ class KNNClassifier:
     def _compute_distances(self, x):
         if self.distance_metric == 'euclidean':
             # Vectorized Euclidean distance
+            # np.sum to vectorize the sum of squares
+            # resulting in a 1D(scalar) array of distances
             return np.sqrt(np.sum((self.X_train - x) ** 2, axis=1))
         elif self.distance_metric == 'manhattan':
             # Vectorized Manhattan distance
@@ -35,11 +37,13 @@ class KNNClassifier:
         k_neighbor_labels = [self.y_train[i] for i in k_indices]
         k_neighbor_distances = [distances[i] for i in k_indices]
 
+        # uniform: take majority vote(most frequent label)
         if self.weights == 'uniform':
-            # Majority vote
             most_common = Counter(k_neighbor_labels).most_common(1)
             return most_common[0][0]
         
+        # distance: take weighted vote
+        # (closer neighbors have more influence)
         elif self.weights == 'distance':
             class_weights = {}
             for label, dist in zip(k_neighbor_labels, k_neighbor_distances):
